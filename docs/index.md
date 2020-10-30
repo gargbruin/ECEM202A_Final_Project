@@ -11,5 +11,5 @@ Prof. Mani Srivastava
 
 ## Team
 
-* Rahul Garg (gargrahul@g.ucla.edu)
-* Mohit Garg (gargmohit@g.ucla.edu)
+* Rahul Garg ([gargrahul@g.ucla.edu](mailto:gargrahul@g.ucla.edu))
+* Mohit Garg ([gargmohit@g.ucla.edu](mailto:gargmohit@g.ucla.edu))
