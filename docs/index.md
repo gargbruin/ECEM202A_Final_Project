@@ -1,3 +1,7 @@
+layout: page
+title: "Activity Log Generation"
+permalink: /intro/
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/gargbruin/ECEM202A_Final_Project/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
