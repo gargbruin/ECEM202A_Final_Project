@@ -1,1 +1,1 @@
-# WALG
+# WALG (Wearable-based Activity Log Generation)
