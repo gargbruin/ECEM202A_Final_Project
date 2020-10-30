@@ -1,6 +1,4 @@
-layout: page
-title: "Activity Log Generation"
-permalink: /intro/
+# Activity Log Generation
 
 ## Welcome to GitHub Pages
 
