@@ -7,16 +7,16 @@ The project is aimed to build a system which can use either classical models (e.
 
 # Data Collection
 There are many datasets available online to recognize human activities using machine learning techniques. Some of these datasets are as following:
-* https://archive.ics.uci.edu/ml/datasets/Activity+Recognition+from+Single+Chest-Mounted+Accelerometer
-* https://archive.ics.uci.edu/ml/datasets/Activity+Recognition+system+based+on+Multisensor+data+fusion+%28AReM%29
-* https://archive.ics.uci.edu/ml/datasets/Daily+and+Sports+Activities
-* https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
-* https://archive.ics.uci.edu/ml/datasets/Smartphone-Based+Recognition+of+Human+Activities+and+Postural+Transitions
-* https://archive.ics.uci.edu/ml/datasets/Heterogeneity+Activity+Recognition
-* https://archive.ics.uci.edu/ml/datasets/Intelligent+Media+Accelerometer+and+Gyroscope+%28IM-AccGyro%29+Dataset
-* https://archive.ics.uci.edu/ml/datasets/Localization+Data+for+Person+Activity
-* https://archive.ics.uci.edu/ml/datasets/Smartphone+Dataset+for+Human+Activity+Recognition+%28HAR%29+in+Ambient+Assisted+Living+%28AAL%29
-* https://archive.ics.uci.edu/ml/datasets/Simulated+Falls+and+Daily+Living+Activities+Data+Set#
+* [Activity Recognition from Single Chest-Mounted Accelerometer Data Set](https://archive.ics.uci.edu/ml/datasets/Activity+Recognition+from+Single+Chest-Mounted+Accelerometer)
+* [Activity Recognition system based on Multisensor data fusion (AReM) Data Set](https://archive.ics.uci.edu/ml/datasets/Activity+Recognition+system+based+on+Multisensor+data+fusion+%28AReM%29)
+* [Daily and Sports Activities Data Set](https://archive.ics.uci.edu/ml/datasets/Daily+and+Sports+Activities)
+* [Human Activity Recognition Using Smartphones Data Set](https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+* [Smartphone-Based Recognition of Human Activities and Postural Transitions Data Set](https://archive.ics.uci.edu/ml/datasets/Smartphone-Based+Recognition+of+Human+Activities+and+Postural+Transitions)
+* [Heterogeneity Activity Recognition Data Set](https://archive.ics.uci.edu/ml/datasets/Heterogeneity+Activity+Recognition)
+* [Intelligent Media Accelerometer and Gyroscope (IM-AccGyro) Dataset Data Set](https://archive.ics.uci.edu/ml/datasets/Intelligent+Media+Accelerometer+and+Gyroscope+%28IM-AccGyro%29+Dataset)
+* [Localization Data for Person Activity Data Set](https://archive.ics.uci.edu/ml/datasets/Localization+Data+for+Person+Activity)
+* [Smartphone Dataset for Human Activity Recognition (HAR) in Ambient Assisted Living (AAL) Data Set](https://archive.ics.uci.edu/ml/datasets/Smartphone+Dataset+for+Human+Activity+Recognition+%28HAR%29+in+Ambient+Assisted+Living+%28AAL%29)
+* [Simulated Falls and Daily Living Activities Data Set Data Set](https://archive.ics.uci.edu/ml/datasets/Simulated+Falls+and+Daily+Living+Activities+Data+Set#)
 
 We will try to reuse some of these datasets for this project. In order to show live demo of this project, we are also planning to collect some data from "Motionsense HRV Wrist Sensor". This sensor has IMU ( 9 DOF - Accelerometer, Gyroscope and Magnetometer ) and a PPG sensor to measure heart-rate.
 
