@@ -32,7 +32,7 @@ Some of the human activities which can be targeted under this project are lying,
 * **Week 7:** Data Preprocessing and Model Development.
 * **Week 8:** Model Validation and Testing for hyperparameter tuning.
 * **Week 9:** Activity Log Generation.
-* **Week 10:** Report/Video Demo.# Timeline
+* **Week 10:** Report/Video Demo.
 
 # Reference Work
 * [Activity recognition using wearable sensors for tracking the elderly](https://link.springer.com/article/10.1007%2Fs11257-020-09268-2).
