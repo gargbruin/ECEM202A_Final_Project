@@ -10,8 +10,8 @@ We are using the SensorLog app on Apple Watch to collect 6-DOF IMU data (acceler
 * Apply a sliding window to generate input data for the neural network 
 * Save the processed data as numpy files 
 
-Raw csv files can be found here : data/WALG_inference/raw/*.csv  
-Processed numpy files can be found here : data/WALG_inference/processed/*.npy
+Raw csv files can be found here : **data/WALG_inference/raw/\*.csv**  
+Processed numpy files can be found here : **data/WALG_inference/processed/\*.npy**
 
 # Algorithms
 # Datasets
