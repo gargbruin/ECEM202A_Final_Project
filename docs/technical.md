@@ -83,6 +83,10 @@ Processed numpy files can be found here : **[Data/Live_Data/processed](https://g
 
 # Platforms Used
 
+<p align="center">
+  <img src="png/Platforms.png">  
+</p>
+
 ## Google Drive
 
 ## Google Colaboratory
