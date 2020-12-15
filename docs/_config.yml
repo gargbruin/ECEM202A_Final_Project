@@ -1,5 +1,6 @@
 theme: jekyll-theme-cayman
 project:
     name: WALG
+    description: Wearable-based Activity Log Generation
     tagline: Wearable-based Activity Log Generation
     github: https://github.com/gargbruin/WALG
