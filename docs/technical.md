@@ -1,3 +1,8 @@
+# Table of Contents
+
+1. [System Overview](#system-overview)
+2. [Data Collection and Preprocessing](#data-collection-and-preprocessing)
+
 # System Overview 
 In this project, we are using the sensor data retrieved from wearable devices to recognize and log the human activities using deep learning approach. We are using the IMU data (accelerometer, gyroscope) obtained from an Apple Watch worn by the user on their dominant hand. The activities recognized are logged and stored in a pdf document. The diagram below shows the overall approach used in this project:
 
