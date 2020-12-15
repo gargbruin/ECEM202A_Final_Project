@@ -75,6 +75,10 @@ Processed numpy files can be found here : **[Data/Live_Data/processed](https://g
 
 ## Model Training
 
+<p align="center">
+  <img src="png/Data_Splitting.png">  
+</p>
+
 # Real-Time Inference
 
 # Platforms Used
