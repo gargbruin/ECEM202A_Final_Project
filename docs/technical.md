@@ -19,15 +19,27 @@
 # System Overview 
 In this project, we are using the sensor data retrieved from wearable devices to recognize and log the human activities using deep learning approach. We are using the IMU data (accelerometer, gyroscope) obtained from an Apple Watch worn by the user on their dominant hand. The activities recognized are logged and stored in a pdf document. The diagram below shows the overall approach used in this project:
 
-![System Diagram](png/technical_approach.png)
+<p align="center">
+  <img src="png/technical_approach.png">  
+</p>
 
 # Training Data
 
 ## Datasets Used
 
+Link to the datasets: **[PAMAP2](https://archive.ics.uci.edu/ml/datasets/WISDM+Smartphone+and+Smartwatch+Activity+and+Biometrics+Dataset+) [WISDM](https://archive.ics.uci.edu/ml/datasets/PAMAP2+Physical+Activity+Monitoring)** 
+
+Raw dat files for PAMAP2 can be found here : **[Data/PAMAP2_Dataset/Protocol](https://github.com/gargbruin/WALG/tree/main/Data/PAMAP2_Dataset/Protocol)**  
+Raw csv files for WISDM can be found here : **[Data/WISDM_Dataset/raw/watch](https://github.com/gargbruin/WALG/tree/main/Data/WISDM_Dataset/raw/watch)**  
+
 ## Data Preprocessing
 
-![Training Data Preprocessing](png/Training_Data_Preprocessing.png)
+<p align="center">
+  <img src="png/Training_Data_Preprocessing.png">  
+</p>
+
+Processed numpy files for PAMAP2 can be found here : **[Data/PAMAP2](https://github.com/gargbruin/WALG/tree/main/Data/PAMAP2)**  
+Processed numpy files for PAMAP2+WISDM can be found here : **[Data/WISDM_PAMAP2](https://github.com/gargbruin/WALG/tree/main/Data/WISDM_PAMAP2)**  
 
 # Real-Time Data 
 
@@ -41,6 +53,10 @@ Raw csv files can be found here : **[Data/Live_Data/raw](https://github.com/garg
 
 ## Data Processing
 
+<p align="center">
+  <img src="png/Real_Time_Data_Preprocessing.png">  
+</p>
+
 * Filter the raw data to extract relevant features 
 * Apply a sliding window to generate input data for the neural network 
 * Save the processed data as numpy files
@@ -51,7 +67,9 @@ Processed numpy files can be found here : **[Data/Live_Data/processed](https://g
 
 ## Model Topology
 
-![Model Topology](png/Model_Topology.png)
+<p align="center">
+  <img src="png/Model_Topology.png">  
+</p>
 
 ## Model Training
 
