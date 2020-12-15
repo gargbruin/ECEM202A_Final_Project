@@ -46,8 +46,10 @@ Processed numpy files for PAMAP2+WISDM can be found here : **[Data/WISDM_PAMAP2]
 ## Data Collection
 We are using the SensorLog app on Apple Watch to collect 6-DOF IMU data (accelerometer and gyroscope). The Apple Watch is worn by the user on their dominant hand. The SensorLog app can sample the data at a frequency of upto 100 Hz. Since our training data was collected at a sampling frequency of 20 Hz, we are using the app to collect the IMU data at the same frequency. The app provides us data in the csv format. Once we have the csv files from the Apple Watch, we upload them on Google Drive and run a preprocessing python script which peforms the following operations: 
 
-![MotionSenseHRV](png/MotionSenseHRV.png)
-![Apple Watch SensorLog](png/Apple_Watch_SensorLog.png)
+<p align="center">
+  <img src="png/MotionSenseHRV.png">  
+  <img src="png/Apple_Watch_SensorLog.png">  
+</p>
 
 Raw csv files can be found here : **[Data/Live_Data/raw](https://github.com/gargbruin/WALG/tree/main/Data/Live_Data/raw)**  
 
