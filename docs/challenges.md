@@ -9,7 +9,9 @@
 * We started our project using the MotionSense HRV wearable and the mCerebrum app to collect real-time data.  
 * However, the app was giving a lot of problems. For example, we were seeing multiple data values for same timestamps in the csv file as shown in the following figure:
 
-![](png/Challenge_2.png)
+<p align="center">
+  <img src="png/Challenge_2.png">  
+</p>
 
 * Debugging the MotionSense HRV wearable and app took around 2 weeks.  
 * This left us with less time to work on the project using Apple Watch.  
