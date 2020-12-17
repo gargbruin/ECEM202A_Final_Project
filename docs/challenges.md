@@ -1,8 +1,10 @@
 # Challenge 1
 
-* Most of the reference HAR work uses multiple sensors at different locations.  
-* It was challenging for us to get better accuracy using just Accelerometer and Gyroscope data from a wrist sensor.  
-* To improve the accuracy, we enhanced the dataset by adding more features like mean and standard deviation.  
+* Most of the work in this area uses a combinations of sensors at multiple locations (ankle, chest, wrist etc). Most of these sensors are not available to users in real-time making such work impractical. 
+* Therefore, we are targeting human activity detection using only a wrist watch which is very common nowadays (According to Pew Research Center, [About one-in-five Americans use a smart watch or fitness tracker](https://www.pewresearch.org/fact-tank/2020/01/09/about-one-in-five-americans-use-a-smart-watch-or-fitness-tracker/)). 
+* Combination of multiple sensors provides a good set of distinguishing features which makes it easy for the model to detect multiple activities. 
+* Whereas, in this project, the limited set of sensors made it difficult for our model to distinguish between activities. 
+* To fix this problem, we have used multiple approaches such as merging similar activities, adding untargeted activities, adding features like mean and standard deviation etc.
 
 # Challenge 2
 
