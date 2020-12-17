@@ -185,6 +185,9 @@ Link to notebook used for network training: **[Notebooks/WALG.ipynb](https://git
 # Real-Time Inference
 ???
 
+# Implementation, experimental evaluation, success metrics, and key findings
+???
+
 # Why Deep Learning for HAR?
 In this project, we are using deep learning approach over other classical approaches because of the following reasons:
 * Classical methods requires deep expertise in the field and also requires a significant knowledge of signal processing.
