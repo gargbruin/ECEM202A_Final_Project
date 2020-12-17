@@ -17,18 +17,19 @@
    6.2 [Google Colaboratory](#google-colaboratory)  
    6.3 [TensorFlow](#tensorflow)  
    
-# System Overview 
-In this project, we are using the sensor data retrieved from wearable devices to recognize and log the human activities using deep learning approach. We are using the IMU data (accelerometer, gyroscope) obtained from an Apple Watch worn by the user on their dominant hand. The activities recognized are logged and stored in a pdf document. The diagram below shows the overall approach used in this project:
-
-<p align="center">
-  <img src="png/technical_approach.png">  
-</p>
-
-We are targeting the detection of following human activities:
+# Problem Statement
+In this project, we are detecting human activities using machine learning model on the IMU data (accelerometer and gyroscope) collected from Apple Watch worn by the user on their dominant hand. We are targeting the detection of following human activities:
 * Walking
 * Sitting
 * Eating
 * Brushing Teeth
+
+# System Overview 
+The diagram below shows the overall approach used in this project:
+
+<p align="center">
+  <img src="png/technical_approach.png">  
+</p>
 
 # Training Data
 
@@ -145,7 +146,7 @@ ConvLSTM is an integration of a CNN (Convolutional layers) with an LSTM. First, 
 
 ## Model Topology Selection
 
-Below table shows various accuracies (training, validation, testing) and the activities which are correctly predicted from read-time data by the different network topologies:  
+Below table shows various accuracies (training, validation, testing) and the activities which are correctly predicted from real-time data by the different network topologies:  
 
 | Model  Topology | Training  Accuracy | Validation Accuracy | Testing  Accuracy | Activities  predicted correctly Real-Time Data |
 |:---------------:|:------------------:|:-------------------:|:-----------------:|:----------------------------------------------:|
@@ -154,26 +155,41 @@ Below table shows various accuracies (training, validation, testing) and the act
 | CNN             |        99.26       |        88.74        |       92.60       |                       All                      |
 | ConvLSTM        |        99.47       |        89.23        |       93.32       |                Sitting & Eating                |
 
-From this table, we can say that CNNs work the best for us because of the following reasons:
-* Although MLP and LSTM has very good training accuracies but the validation and test accuracy is not very good. Moreover, trained models with these topologies are not able to correctly predict any activity from the data collected in real-time setup.
-* ConvLSTM has very good accuracies (comparable to CNNs) for training, validation and testing. But trained ConvLSTM model is able to correctly predict only half the target activities.
+From this table, we can say that CNNs work best for us because of the following reasons:
+* Although MLP and LSTM has very good training accuracies but the validation and test accuracy are not very good. Moreover, trained models with these topologies are not able to correctly predict any activity from the data collected from real-time setup.
+* ConvLSTM has very good accuracies (comparable to CNNs) for training, validation and testing. But trained ConvLSTM model is able to correctly predict only half of the target activities.
 * CNN has good training, validation and test accuracies as well as trained CNN model is able to correctly predict all the target activities.
-
-To improve the model’s accuracy, we tried many different network configurations (like changing number of layers, number of features per layer, adding different types of layers like BatchNormalization, Dropout). 
 
 ## Model Training
 
-We tried training the model with different number of epochs and batch sizes and settled with 50 epochs with a batch size of 256. It takes around 3 minutes and 20 seconds to train and validate the model. After training, the best model is saved which is later on loaded for inference with the test data and real-time data.
+We tried training the model with different number of epochs and batch sizes and settled with 70 epochs with a batch size of 256. The model accuracy starts saturating in the range of 60-70 epochs. It takes around 4 minutes and 40 seconds to train and validate the model. After training, the best model is saved which is later on loaded for inference with the test data and real-time data.
 
-Strategies used to improve accuracy:
+Strategies used to improve the model's accuracy:
 
-* **Merge Activities**:
-* **Additional Activities**:
-* **Window Size**:
+* **Network Tuning**: To improve the model’s accuracy, we tried many different network configurations like changing number of layers, number of features per layer, adding different types of layers like BatchNormalization, Dropout etc. 
+* **Merge Activities**: Both the origional datasets were using multiple sensors at different locations (PAMAP2 - ankle, wrist and chest; WISDM - phone and wrist). Whereas in this project we are targeting detection based only on the accelerometer and gyroscope data obtained only from wrist. This reduction in number of features makes it difficult to diffrentiate between various activities, especially the ones which are very simillar. This was further resulting in reduced accuracy of our model. To fix this problem, we are merging data for multiple simillar activities under signle label. 
+
+|       Label     |     Original Activities     |
+|:---------------:|:---------------------------:|
+| Walking         | Walking                     |        
+| Sitting         | Sitting, Typing             |
+| Eating          | Eating Chips, Eating Pasta  |   
+| Brushing Teeth  | Brushing Teeth              | 
+
+This merging of activities also helps us to increase the amount of data per label.
+* **Additional Activities**: While experimenting, we observed that adding some of extra activities (which are not targeted) help to improve the prediction accuracy for the targeted activities. For example, adding data for clapping, stairs and jogging helped us to improve the accuracy for eating and walking. We believe, this could be because of the fact that these additional activities help the model to have more distinguishing features between the activities. 
+* **Window Size**: We experimented with different window sizes for splitting the data into samples. As per observation, small windows (2 -4 seconds) are good for activities like walking and sitting where activities like eating and brushing teeth needs bigger window sizes (20-25 seconds). Therefore, we are using an intermediate value of 10 seconds for window size.
 
 Link to notebook used for network training: **[Notebooks/WALG.ipynb](https://github.com/gargbruin/WALG/blob/main/Notebooks/WALG.ipynb)**
 
 # Real-Time Inference
+???
+
+# Why Deep Learning for HAR?
+In this project, we are using deep learning approach over other classical approaches because of the following reasons:
+* Classical methods requires deep expertise in the field and also requires a significant knowledge of signal processing.
+* With the ubiquitous presence of smart wearable devices like Apple Watch, Fitbit bands etc around us, a lot of sensor data is now available for deep learning based approaches.
+* Because of it's application in multiple fields, a lot of research has been going on in the field of machine learning. This research is resulting in many advancements which can be utilized in field of Human Activity Recognition (HAR) too.
 
 # Platforms Used
 
