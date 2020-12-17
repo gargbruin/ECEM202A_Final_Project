@@ -1,3 +1,24 @@
+
+# Related Work
+
+Prior work examples including references, and the relative novelty of your work.
+
+# Strengths of this work
+
+* As shown in Related Work section, most of the work in this area uses a combinations of sensors at multiple locations. Such combination of multiple sensors provides a good set of distinguishing features which makes it easy for the model to detect multiple activities. Whereas, in this project we are using only two sensors (accelerometer and gyroscope) that too only on the wrist. This limited set of sensors made it difficult for our model to distinguish between activities. To fix this problem, we have used multiple approaches such as merging similar activities, adding untargeted activities, adding features like mean and standard deviation etc. Detecting human activities only from 
+
+# Weakness of this work
+
+# Future Directions
+
+# Individual Contribution
+
+# Links
+Section with links to PDF of your final presentation slides, and any data sets not in your repo
+
+# Credits
+
+
 Human Activity Recognition (HAR) is an active area of research because of it's importance in multiple applications. Some of the recent works in this area are as follows: 
 
 * [Human Activity Recognition: A Survey](https://www.sciencedirect.com/science/article/pii/S1877050919310166).  
