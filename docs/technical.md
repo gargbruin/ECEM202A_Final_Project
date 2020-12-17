@@ -1,21 +1,24 @@
 # Table of Contents
 
-1. [System Overview](#system-overview)
-2. [Training Data](#training-data)  
-   2.1 [Datasets Used](#datasets-used)  
-   2.2 [Data Preprocessing](#data-preprocessing)
-3. [Real-Time Data](#real-time-data)  
-   3.1 [Data Collection](#data-collection)  
+1. [Problem Statement](#problem-statement)
+2. [System Overview](#system-overview)
+3. [Training Data](#training-data)  
+   3.1 [Datasets Used](#datasets-used)  
    3.2 [Data Preprocessing](#data-preprocessing)
-4. [Machine Learning Model](#machine-learning-model)  
-   4.1 [Model Topologies Tried](#model-topologies-tried)  
-   4.2 [Model Topology Selection](#model-topology-selection)  
-   4.3 [Model Training](#model-training)
-5. [Real-Time Inference](#real-time-inference)  
-6. [Platforms Used](#platforms-used)  
-   6.1 [Google Drive](#google-drive)  
-   6.2 [Google Colaboratory](#google-colaboratory)  
-   6.3 [TensorFlow](#tensorflow)  
+4. [Real-Time Data](#real-time-data)  
+   4.1 [Data Collection](#data-collection)  
+   4.2 [Data Preprocessing](#data-preprocessing)
+5. [Machine Learning Model](#machine-learning-model)  
+   5.1 [Model Topologies Tried](#model-topologies-tried)  
+   5.2 [Model Topology Selection](#model-topology-selection)  
+   5.3 [Model Training](#model-training)
+6. [Real-Time Inference](#real-time-inference)  
+   6.1 [Inference for Model Development](#inference-for-model-development)  
+   6.2 [Inference for Demo](#inference-for-demo)  
+7. [Platforms Used](#platforms-used)  
+   7.1 [Google Drive](#google-drive)  
+   7.2 [Google Colaboratory](#google-colaboratory)  
+   7.3 [TensorFlow](#tensorflow)  
    
 # Problem Statement
 In this project, we are detecting human activities using machine learning model on the IMU data (accelerometer and gyroscope) collected from Apple Watch worn by the user on their dominant hand. We are targeting the detection of following human activities:
@@ -183,10 +186,41 @@ This merging of activities also helps us to increase the amount of data per labe
 Link to notebook used for network training: **[Notebooks/WALG.ipynb](https://github.com/gargbruin/WALG/blob/main/Notebooks/WALG.ipynb)**
 
 # Real-Time Inference
-???
 
-# Implementation, experimental evaluation, success metrics, and key findings
-???
+## Inference for Model Development
+In order to verify the accuracy of our model on real-time data, we collected multiple data files for each target activity with two different subjects. This was done using the procedure explained in Real-Time Data section. These data files were used to make decisions in the model development process. These raw data files were preprocessed as explained in Real-Time Data - Data Preprocessing section.
+
+Below is the snapshot of the script used for making inference:
+
+![](png/inf_script.png)
+
+Below are the results of the inference from the trained model:
+
+![](png/inf_walking.png)
+![](png/inf_sitting.png)
+![](png/inf_eating.png)
+![](png/inf_brushing.png)
+
+Raw csv files can be found here : **[Data/Live_Data/raw](https://github.com/gargbruin/WALG/tree/main/Data/Live_Data/raw)**  
+Processed numpy files can be found here : **[Data/Live_Data/processed](https://github.com/gargbruin/WALG/tree/main/Data/Live_Data/processed)**
+
+## Inference for Demo
+
+For final demo, we are using a different subject than the ones which were used during model development. Our subject performed all 4 target activities consecutively. We recorded a video with timestamps and collected sensor data using SensorLog app. Python script in "[WALG_Demo.ipynb](https://github.com/gargbruin/WALG/blob/main/Notebooks/WALG_Demo.ipynb)" notebook is used to first pre-process the raw data and then pretrained model is used to make predictions. 
+
+In order to filter the noise, predicted values are postprocessed by the same script. We are using a running window which compares the prediction for last three samples before giving a final processed prediction. Following is the snapshot of the script used for post-processing the predictions:
+
+![](png/demo_postprocess.png)
+
+Link to the video used for demo: ???
+
+Following are the predictions made by our model:
+
+![](png/demo_predictions.jpeg)
+
+Link to raw data used for demo: **[Data/Live_Data/raw/2020_12_16_Suparno_All.csv](https://github.com/gargbruin/WALG/tree/main/Data/Live_Data/raw/2020_12_16_Suparno_All.csv)**  
+Link to processed data used for demo: **[Data/Live_Data/processed/X_2020_12_16_Suparno_All.npy](https://github.com/gargbruin/WALG/tree/main/Data/Live_Data/processed/X_2020_12_16_Suparno_All.npy)**  
+Link to the file storing timestamps for demo: **[Data/Live_Data/tstamps/2020_12_16_Suparno_All_tstamps.csv](https://github.com/gargbruin/WALG/tree/main/Data/Live_Data/tstamps/2020_12_16_Suparno_All_tstamps.csv)**  
 
 # Why Deep Learning for HAR?
 In this project, we are using deep learning approach over other classical approaches because of the following reasons:
