@@ -8,8 +8,9 @@
    3.1 [Data Collection](#data-collection)  
    3.2 [Data Preprocessing](#data-preprocessing)
 4. [Machine Learning Model](#machine-learning-model)  
-   4.1 [Model Topology](#model-topology)  
-   4.2 [Model Training](#model-training)
+   4.1 [Model Topologies Tried](#model-topologies-tried)  
+   4.2 [Model Topology Selection](#model-topology-selection)  
+   4.3 [Model Training](#model-training)
 5. [Real-Time Inference](#real-time-inference)  
 6. [Platforms Used](#platforms-used)  
    6.1 [Google Drive](#google-drive)  
@@ -51,6 +52,24 @@ Following are the various steps used in preprocessing the training datasets:
 * **Sliding Window**: We are using the sliding window approach to split data into fixed size windows. With experimentation, we found that a sliding window of 10 seconds (200 samples) and a stride of 2 seconds (40 samples) gives us the best training and inference accuracy for all targeted activities. 
 * **Mean and Standard Deviation**: Most of the reference HAR work uses multiple sensors at different locations (like ankles, wrist, chest etc). However, in this project, we are detecting human activities based on two sensors' data (accelerometer, gyroscope) only and that too from just one location (wrist). To recover the accuracy loss because of a limited number of input features (sensors), we added additional features like mean and standard deviation to the sampled windows.
 
+Our combined training data has 60 unique users which performed all the targeted activities. To perform validation and testing accurately, users to validate and test the model are not being used for training. The processed training dataset has been divided into following subsets:
+
+<p align="center">
+  <img src="png/Data_Splitting.png">  
+</p>
+
+This division of data in three subsets (training, validation and testing) has been done randomly. The following snippet of the data-processing script selects subjects randomly for the three subsets: 
+
+<p align="left">
+  <img src="png/Splitting_Data.png">  
+</p>
+
+The final dataset used for training, validation and testing of the network has the following distribution:
+
+<p align="left">
+  <img src="png/Data_Distribution.png">  
+</p>
+
 Link to notebook used for PAMAP2 dataset preprocessing: **[Notebooks/Preprocess_PAMAP2.ipynb](https://github.com/gargbruin/WALG/blob/main/Notebooks/Preprocess_PAMAP2.ipynb)**  
 Link to notebook used for WISDM+PAMAP2 dataset preprocessing: **[Notebooks/Preprocess_WISDM_PAMAP2.ipynb](https://github.com/gargbruin/WALG/blob/main/Notebooks/Preprocess_WISDM_PAMAP2.ipynb)**  
 Processed numpy files for PAMAP2 can be found here : **[Data/PAMAP2](https://github.com/gargbruin/WALG/tree/main/Data/PAMAP2)**  
@@ -84,24 +103,73 @@ Processed numpy files can be found here : **[Data/Live_Data/processed](https://g
 
 # Machine Learning Model
 
-## Model Topology
+## Model Topologies Tried
 
-We experimented with multiple different neural network topologies like MLPs, CNNs, LSTMs and ConvLSTMs and found that CNNs work the best for us.
-To improve the model’s accuracy, we tried many different network configurations (like changing number of layers, number of features per layer, adding different types of layers like BatchNormalization, Dropout). Following is the final network topology we are using for making predictions on real-time data:
+We experimented with multiple different neural network topologies like MLPs, CNNs, LSTMs and ConvLSTMs to perform this task of human activity recognition. Below is the list of network topologies we tried and their training and validation accuracies for 70 epochs.
+
+### Multi Level Perceptron (MLP)
+
+A multilayer perceptron (MLP) is a class of feedforward artificial neural network (ANN). An MLP consists of at least three layers of nodes: an input layer, a hidden layer and an output layer. Its multiple layers and non-linear activation distinguishes data that is not linearly separable.
 
 <p align="center">
-  <img src="png/Model_Topology.png">  
+  <img src="png/MLP_model.png">  
+  <img src="png/MLP_training.png">  
 </p>
+
+### Long Short-Term Memory (LSTM)
+
+Long Short-Term Memory (LSTM) networks are a type of recurrent neural network capable of learning order dependence in sequence prediction problems. This is a behavior required in complex problem domains like machine translation, speech recognition, human activity recognition and more.
+
+<p align="center">
+  <img src="png/LSTM_model.png">  
+  <img src="png/LSTM_training.png">  
+</p>
+
+### Convolutional Neural Networks (CNN)
+
+A convolutional neural network (CNN, or ConvNet) is a class of deep neural networks, most commonly applied to analyzing visual imagery. They have applications in image and video recognition, recommender systems, image classification, medical image analysis, natural language processing, brain-computer interfaces, and financial time series. CNNs are regularized versions of multilayer perceptrons. Multilayer perceptrons usually mean fully connected networks, that is, each neuron in one layer is connected to all neurons in the next layer. CNNs take advantage of the hierarchical pattern in data and assemble more complex patterns using smaller and simpler patterns. Therefore, on the scale of connectedness and complexity, CNNs are on the lower extreme.
+
+<p align="center">
+  <img src="png/CNN_model.png">  
+  <img src="png/CNN_training.png">  
+</p>
+
+### Convolutional Long Short-Term Memory (ConvLSTM)
+
+ConvLSTM is an integration of a CNN (Convolutional layers) with an LSTM. First, the CNN part of the model process the data and one-dimensional result feed an LSTM model.
+
+<p align="center">
+  <img src="png/ConvLSTM_model.png">  
+  <img src="png/ConvLSTM_training.png">  
+</p>
+
+## Model Topology Selection
+
+Below table shows various accuracies (training, validation, testing) and the activities which are correctly predicted from read-time data by the different network topologies:  
+
+| Model  Topology | Training  Accuracy | Validation Accuracy | Testing  Accuracy | Activities  predicted correctly Real-Time Data |
+|:---------------:|:------------------:|:-------------------:|:-----------------:|:----------------------------------------------:|
+| MLP             |        96.77       |        78.72        |       81.64       |                      None                      |
+| LSTM            |        98.04       |        79.68        |       82.63       |                      None                      |
+| CNN             |        99.26       |        88.74        |       92.60       |                       All                      |
+| ConvLSTM        |        99.47       |        89.23        |       93.32       |                Sitting & Eating                |
+
+From this table, we can say that CNNs work the best for us because of the following reasons:
+* Although MLP and LSTM has very good training accuracies but the validation and test accuracy is not very good. Moreover, trained models with these topologies are not able to correctly predict any activity from the data collected in real-time setup.
+* ConvLSTM has very good accuracies (comparable to CNNs) for training, validation and testing. But trained ConvLSTM model is able to correctly predict only half the target activities.
+* CNN has good training, validation and test accuracies as well as trained CNN model is able to correctly predict all the target activities.
+
+To improve the model’s accuracy, we tried many different network configurations (like changing number of layers, number of features per layer, adding different types of layers like BatchNormalization, Dropout). 
 
 ## Model Training
 
-Our combined training data has 60 unique users which performed all the targeted activities. To perform validation and testing accurately, users to validate and test the model are not being used for training. The processed training dataset has been divided into following subsets:
-
-<p align="center">
-  <img src="png/Data_Splitting.png">  
-</p>
-
 We tried training the model with different number of epochs and batch sizes and settled with 50 epochs with a batch size of 256. It takes around 3 minutes and 20 seconds to train and validate the model. After training, the best model is saved which is later on loaded for inference with the test data and real-time data.
+
+Strategies used to improve accuracy:
+
+* **Merge Activities**:
+* **Additional Activities**:
+* **Window Size**:
 
 Link to notebook used for network training: **[Notebooks/WALG.ipynb](https://github.com/gargbruin/WALG/blob/main/Notebooks/WALG.ipynb)**
 
