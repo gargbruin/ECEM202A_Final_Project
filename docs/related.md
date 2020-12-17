@@ -1,7 +1,7 @@
 
 # Related Work
 
-??? Prior work examples including references, and the relative novelty of your work.
+
 
 # Strengths of this work
 
@@ -21,8 +21,10 @@
 # Individual Contribution
 We both worked together for the complete project either through in-person meetings or Zoom calls.
 
-# Links
- ??? Section with links to PDF of your final presentation slides, and any data sets not in your repo
+# Presentation Links
+
+* [Midterm Presentation](https://github.com/gargbruin/WALG/blob/main/Presentations/Midterm%20Presentation.pptx)
+* [Final Presentation](???)
 
 # Acknowledgement
 We would like to thank J.Vikranth Jeyakumar for his lecture and tutorial on "Human Activity Recognition using Deep Learning (Tensorflow)" and sharing his source code which we referred for our project.
