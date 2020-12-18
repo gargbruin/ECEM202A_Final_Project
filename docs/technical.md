@@ -170,7 +170,7 @@ We tried training the model with different number of epochs and batch sizes and 
 Strategies used to improve the model's accuracy:
 
 * **Network Tuning**: To improve the model’s accuracy, we tried many different network configurations like changing number of layers, number of features per layer, adding different types of layers like BatchNormalization, Dropout etc. 
-* **Merge Activities**: Both the origional datasets were using multiple sensors at different locations (PAMAP2 - ankle, wrist and chest; WISDM - phone and wrist). Whereas in this project we are targeting detection based only on the accelerometer and gyroscope data obtained only from wrist. This reduction in number of features makes it difficult to diffrentiate between various activities, especially the ones which are very simillar. This was further resulting in reduced accuracy of our model. To fix this problem, we are merging data for multiple simillar activities under signle label. 
+* **Merge Activities**: Both the origional datasets were using multiple sensors at different locations (PAMAP2 - ankle, wrist and chest; WISDM - phone and wrist). Whereas in this project we are targeting detection based only on the accelerometer and gyroscope data obtained only from wrist. This reduction in number of features makes it difficult to diffrentiate between various activities, especially the ones which are very similar. This was further resulting in reduced accuracy of our model. To fix this problem, we are merging data for multiple similar activities under single label. 
 
 |       Label     |     Original Activities     |
 |:---------------:|:---------------------------:|
