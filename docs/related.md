@@ -31,7 +31,7 @@ We both worked together for the complete project either through in-person meetin
 # Presentation Links
 
 * [Midterm Presentation](https://github.com/gargbruin/WALG/blob/main/Presentations/Midterm%20Presentation.pptx)
-* [Final Presentation](???)
+* [Final Presentation](https://github.com/gargbruin/WALG/blob/main/Presentations/Final%20Presentation.pptx)
 
 # Acknowledgement
 We would like to thank J.Vikranth Jeyakumar for his lecture and tutorial on "Human Activity Recognition using Deep Learning (Tensorflow)" and sharing his source code which we referred for our project.
