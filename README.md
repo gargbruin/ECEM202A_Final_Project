@@ -19,4 +19,4 @@ Following figure shows the overview of our HAR system:
 ![System Diagram](docs/png/technical_approach.png)
 
 ## Conclusion and Future Scope
-The recent advancements in machine learning can be applied to the very important field of Human Activity Recognition (HAR). In this project, we shown once such successful approach in applying deep learning to detect 4 different day-to-day activities (Walking, Sitting, Eating, Brushing Teeth). This work can be extended to include more activities by adding more sensors (such as heart-rate monitor) and by using new advancements in machine learning.
+The recent advancements in machine learning can be applied to the very important field of Human Activity Recognition (HAR). In this project, we have shown one such successful approach in applying deep learning to detect 4 different day-to-day activities (Walking, Sitting, Eating, Brushing Teeth). This work can be extended to include more activities by adding more sensors (such as heart-rate monitor) and by using new advancements in machine learning.
