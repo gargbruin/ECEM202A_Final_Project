@@ -212,7 +212,7 @@ In order to filter the noise, predicted values are postprocessed by the same scr
 
 ![](png/demo_postprocess.png)
 
-Link to the video used for demo: ???
+[Link](https://youtu.be/drAmhRL1q2M) to the video demo.
 
 Following are the predictions made by our model:
 
